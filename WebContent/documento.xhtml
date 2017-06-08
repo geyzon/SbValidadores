@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<title>Validação de Documento</title>
+	</head>
+	
+	<body class="container">
+		<div class="panel-info">
+			<h:form id="form" action="" method="get">
+				<label>Tipo do Documento:</label>
+				<h:selectOneRadio id="radiotipo" value="#{docBean.tipo}"> 
+					<f:selectItem itemValue = "cpf" itemLabel = "CPF" checked="checked"></f:selectItem>
+					<f:selectItem itemValue = "cnpj" itemLabel = "CNPJ"></f:selectItem>
+					<f:selectItem itemValue = "rg" itemLabel = "RG"></f:selectItem>					
+				</h:selectOneRadio>
+				<p></p>
+				<label>Número do Documento:</label>
+				<h:inputText class="form-control" id="tipo" value="#{docBean.tipo}"></h:inputText>
+				<p></p>
+				<h:commandButton class="btn btn-success" value="Processar" action="#{docBean.processar}" immediate="true"></h:commandButton>
+				<p></p>
+				<h:inputHidden class="btn btn-success" value="Validar" validator="#{docBean.validarDocumento}" />
+			</h:form>				
+		</div>	
+	</body>	
+</html>

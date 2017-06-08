@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<title>Título</title>
+	</head>
+	
+	<body class="container">
+		<div class="panel-info">
+			<h:form id="form" action="" method="get">
+				<h:messages showSummary="false" showDetail="true" />
+				<div class="col-sm-3">Título: </div>
+				<h:inputText id="titulo" value="#{livroBean.titulo}"></h:inputText><p></p>
+				<div class="col-sm-3">Data de Publicação: </div> 		
+				<h:inputText id="dataPublicacao" value="#{livroBean.dataPublicacao}">
+					<!-- Conversão de Data -->
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:inputText><br />	
+				<h:message for="dataPublicacao" showSummary="true" showDetail="false" /><p></p>
+				<div class="col-sm-3">Número de Páginas: </div> 
+				<h:inputText id="numPaginas" value="#{livroBean.numPaginas}">
+					<!-- Validação de número -->			
+				</h:inputText> <br />
+				<h:message for="numPaginas" showSummary="true" showDetail="true" /><p></p>
+				<div class="col-sm-3">Preço: </div>		
+				<h:inputText id="preco" value="#{livroBean.preco}">
+					<!-- Conversão de Valor decimal --> <!-- GroupingUsed é o separador de milhar -->
+					<f:convertNumber minFractionDigits="2" maxFractionDigits="2" groupingUsed="false" /> 
+				</h:inputText> <br />
+				<h:message for="preco" showSummary="false" showDetail="true" /><p></p>
+				<h:commandButton class="btn btn-success" value="Cadastrar" action="#{livroBean.cadastra}"></h:commandButton>
+			</h:form>				
+		</div>	
+	</body>	
+</html>
