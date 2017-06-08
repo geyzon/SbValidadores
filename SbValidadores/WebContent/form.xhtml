@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<title>Conversores</title>
+	</head>
+	<body class="container">
+		<h:form id="form">
+			<label class="h2">Formulário</label>
+			<h:messages styleClass="text-danger"></h:messages>
+			<h:panelGrid class="table table-hover" columns="3">			
+				<label>Número inteiro: </label> 
+				<h:inputText id="inteiro" class="form-control" value="#{form.numeroInteiro}"></h:inputText>
+				<h:message for="inteiro" styleClass="text-danger"></h:message>
+				<label>Número decimal: </label> 
+				<h:inputText id="decimal" class="form-control" value="#{form.numeroDecimal}"
+				converterMessage="Dado inválido - Erro de conversão para decimal!">
+					<f:convertNumber type="number" locale="pt_BR"></f:convertNumber>
+				</h:inputText>
+				<h:message for="decimal" styleClass="text-danger"></h:message>
+				<label>Caractere: </label> 
+				<h:inputText id="caractere" class="form-control" value="#{form.caractere}"
+				converterMessage="Dado inválido - Erro de conversão para caractere!"></h:inputText>
+				<h:message for="caractere" styleClass="text-danger"></h:message>
+				<label>Data (dd/MM/yyyy): </label>
+				<h:inputText id="data" class="form-control" value="#{form.data}"
+				converterMessage="Dado inválido - Erro de conversão para data!">
+					<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+				</h:inputText>
+				<h:message for="data" styleClass="text-danger"></h:message>
+				<label>Opção (OP_1 / OP_2): </label>
+				<h:inputText id="opcao" class="form-control" value="#{form.opcao}"
+				converterMessage="Dado inválido - Opção inexistente!"></h:inputText>
+				<h:message for="opcao" styleClass="text-danger"></h:message>
+			</h:panelGrid>
+			<h:commandButton class="btn btn-success" value="Processar" action="#{form.processar}"></h:commandButton>
+		</h:form>
+	</body>
+</html>
